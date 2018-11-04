@@ -20,9 +20,8 @@ public class BirdScript : MonoBehaviour {
     }
 
     void Update () {
-        if (dead) {
+        if (isDead()) {
             die();
-            return;
         }
         else {
             if (Input.GetKeyDown(KeyCode.Space)) {
@@ -44,5 +43,12 @@ public class BirdScript : MonoBehaviour {
 
     public void die() {
         Debug.Log("morri");
+    }
+
+    public bool isDead() {
+        if (dead) return true;
+        if (transform.position.y < -4.5f) return true;
+
+        return false;
     }
 }
