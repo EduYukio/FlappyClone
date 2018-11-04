@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bird : MonoBehaviour {
+public class BirdScript : MonoBehaviour {
     Rigidbody2D body;
     SpriteRenderer birdSprite;
     Sprite normalSprite;
 
     public float jumpSpeed;
+    [HideInInspector] public bool dead = false;
     public Sprite flappingSprite;
 
 
@@ -19,10 +20,15 @@ public class Bird : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            jump();
+        if (dead) {
+            die();
+            return;
         }
-
+        else {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                jump();
+            }
+        }
     }
 
     IEnumerator flappingAnimation(float waitTime) {
@@ -34,5 +40,9 @@ public class Bird : MonoBehaviour {
     void jump() {
         body.velocity = new Vector2(0f, jumpSpeed);
         StartCoroutine(flappingAnimation(0.1f));
+    }
+
+    public void die() {
+        Debug.Log("morri");
     }
 }
