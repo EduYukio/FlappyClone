@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4058460391591002}
   - component: {fileID: 212392623149056388}
+  - component: {fileID: 50147659746072856}
+  - component: {fileID: 114521942948109296}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -40,6 +42,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50147659746072856
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967731086635994}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 600
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &114521942948109296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967731086635994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c324629c2a3b9a5418e36d980d6d36a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSpeed: 20
+  flappingSprite: {fileID: 21300000, guid: 3ab526c210cd451479d2cee4102e5f04, type: 3}
 --- !u!212 &212392623149056388
 SpriteRenderer:
   m_ObjectHideFlags: 1
