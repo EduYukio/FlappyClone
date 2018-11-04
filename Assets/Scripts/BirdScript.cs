@@ -10,6 +10,7 @@ public class BirdScript : MonoBehaviour {
     public float jumpSpeed;
     [HideInInspector] public bool dead = false;
     public Sprite flappingSprite;
+    float floorYCoordiante = -4.5f;
 
 
     void Start () {
@@ -24,7 +25,7 @@ public class BirdScript : MonoBehaviour {
             die();
         }
         else {
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (GameManager.IsInputEnabled && Input.GetKeyDown(KeyCode.Space)) {
                 jump();
             }
         }
@@ -42,12 +43,17 @@ public class BirdScript : MonoBehaviour {
     }
 
     public void die() {
-        Debug.Log("morri");
+        //Debug.Log("morri");
+        dead = false;
+        body.velocity = new Vector2(-4f, 5f);
+        body.angularVelocity = +120f;
+        body.gravityScale = 1f;
+        GameManager.IsInputEnabled = false;
     }
 
     public bool isDead() {
         if (dead) return true;
-        if (transform.position.y < -4.5f) return true;
+        if (transform.position.y < floorYCoordiante) return true;
 
         return false;
     }
