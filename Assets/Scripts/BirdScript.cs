@@ -16,6 +16,7 @@ public class BirdScript : MonoBehaviour {
     float floorYCoordiante = -4.5f;
     
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI PressSpaceText;
 
     void Start () {
         GameManager.score = 0;
@@ -23,6 +24,11 @@ public class BirdScript : MonoBehaviour {
         birdSprite = GetComponent<SpriteRenderer>();
 
         normalSprite = birdSprite.sprite;
+
+        if (!GameManager.pressedSpace) {
+            body.gravityScale = 0.4f;
+            PressSpaceText.enabled = true;
+        }
     }
 
     void Update () {
@@ -45,6 +51,12 @@ public class BirdScript : MonoBehaviour {
     void jump() {
         body.velocity = new Vector2(0f, jumpSpeed);
         StartCoroutine(flappingAnimation(0.1f));
+
+        if (!GameManager.pressedSpace) {
+            body.gravityScale = 1.5f;
+            GameManager.pressedSpace = true;
+            PressSpaceText.enabled = false;
+        }
     }
 
     public void die() {
