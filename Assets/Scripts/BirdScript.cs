@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BirdScript : MonoBehaviour {
     Rigidbody2D body;
@@ -12,6 +14,8 @@ public class BirdScript : MonoBehaviour {
     public Sprite flappingSprite;
     float floorYCoordiante = -4.5f;
 
+    float score = 0f;
+    public TextMeshProUGUI ScoreText;
 
     void Start () {
         body = GetComponent<Rigidbody2D>();
@@ -57,4 +61,15 @@ public class BirdScript : MonoBehaviour {
 
         return false;
     }
+
+    // OnTriggerEnter2D is called when the Collider2D other enters the trigger (2D physics only)
+    public void OnTriggerEnter2D(Collider2D other) {
+        GameObject objectCollided = other.gameObject;
+        if (objectCollided.tag == "ScoreArea") {
+            score += 1;
+            ScoreText.text = score.ToString();
+        }
+    }
+
+
 }
