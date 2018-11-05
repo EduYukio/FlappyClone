@@ -49,6 +49,7 @@ public class BirdScript : MonoBehaviour {
     }
 
     void jump() {
+        FindObjectOfType<AudioManager>().Play("Flap");
         body.velocity = new Vector2(0f, jumpSpeed);
         StartCoroutine(flappingAnimation(0.1f));
 
@@ -60,6 +61,7 @@ public class BirdScript : MonoBehaviour {
     }
 
     public void die() {
+        FindObjectOfType<AudioManager>().Play("Baque");
         dead = false;
         ObstacleArrayScript.obstaclesSpeed = 0;
         body.velocity = new Vector2(-4f, 5f);
@@ -82,6 +84,7 @@ public class BirdScript : MonoBehaviour {
         if (objectCollided.tag == "ScoreArea") {
             GameManager.score += 1;
             ScoreText.text = GameManager.score.ToString();
+            FindObjectOfType<AudioManager>().Play("Plim");
         }
     }
 

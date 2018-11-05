@@ -14,6 +14,7 @@ public class GameOverScript : MonoBehaviour {
         showScore();
     }
     public void retryButton() {
+        FindObjectOfType<AudioManager>().Play("Start");
         SceneManager.LoadScene("MainScene");
     }
 
@@ -31,6 +32,8 @@ public class GameOverScript : MonoBehaviour {
         if (GameManager.score > GameManager.highscore) {
             GameManager.highscore = GameManager.score;
             HighScoreText.text = "HIGHSCORE     " + GameManager.highscore.ToString() + "\n                             NEW!!!";
+            FindObjectOfType<AudioManager>().Play("Victory");
+
         }
         else {
             HighScoreText.text = "HIGHSCORE     " + GameManager.highscore.ToString();
