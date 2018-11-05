@@ -19,6 +19,7 @@ public class BirdScript : MonoBehaviour {
     public TextMeshProUGUI PressSpaceText;
 
     void Start () {
+        FindObjectOfType<AudioManager>().Play("Start");
         GameManager.score = 0;
         body = GetComponent<Rigidbody2D>();
         birdSprite = GetComponent<SpriteRenderer>();
@@ -85,6 +86,7 @@ public class BirdScript : MonoBehaviour {
             GameManager.score += 1;
             ScoreText.text = GameManager.score.ToString();
             FindObjectOfType<AudioManager>().Play("Plim");
+            Destroy(other);
         }
     }
 
