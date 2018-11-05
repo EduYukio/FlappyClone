@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 73199690}
   - component: {fileID: 73199689}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -63, y: 28.399994}
+  m_AnchoredPosition: {x: -13, y: 34}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &73199689
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 37.513596, y: 7.957428, z: -67.523895, w: -16.252724}
+  m_margin: {x: 37.513596, y: 7.957428, z: -153.96735, w: -16.252724}
   m_textInfo:
     textComponent: {fileID: 73199689}
     characterCount: 6
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 250822548}
   - component: {fileID: 250822547}
   m_Layer: 5
-  m_Name: HighScore
+  m_Name: HighScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -85, y: -15.600006}
+  m_AnchoredPosition: {x: -47, y: -15.600006}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &250822547
@@ -323,7 +323,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "HIGHSCORE\t"
+  m_text: "HIGHSCORE\t\n                                NEW!!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1c665d2bb284d864fad62d3f3313fd1e, type: 2}
   m_sharedMaterial: {fileID: 21938270896018462, guid: 1c665d2bb284d864fad62d3f3313fd1e,
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -389,15 +389,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -69.797455, w: -9.432091}
+  m_margin: {x: 0, y: 0, z: -186.87915, w: -22.562744}
   m_textInfo:
     textComponent: {fileID: 250822547}
-    characterCount: 10
+    characterCount: 49
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 1
+    spaceCount: 34
+    wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -459,7 +459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -46.7, y: -85.8}
+  m_AnchoredPosition: {x: -57, y: -90}
   m_SizeDelta: {x: 201.4, y: 84.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733847411
@@ -1213,6 +1213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ff6888de84d20459d4a7794e2dde8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreText: {fileID: 73199689}
+  HighScoreText: {fileID: 250822547}
 --- !u!1 &1834550873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 138.3, y: -89.4}
+  m_AnchoredPosition: {x: 138.3, y: -95}
   m_SizeDelta: {x: 201.4, y: 84.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2034135909

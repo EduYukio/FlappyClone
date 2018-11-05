@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class BirdScript : MonoBehaviour {
@@ -10,14 +11,14 @@ public class BirdScript : MonoBehaviour {
     Sprite normalSprite;
 
     public float jumpSpeed;
-    [HideInInspector] public bool dead = false;
+    [HideInInspector] public static bool dead = false;
     public Sprite flappingSprite;
     float floorYCoordiante = -4.5f;
-
-    float score = 0f;
+    
     public TextMeshProUGUI ScoreText;
 
     void Start () {
+        GameManager.score = 0;
         body = GetComponent<Rigidbody2D>();
         birdSprite = GetComponent<SpriteRenderer>();
 
@@ -26,7 +27,7 @@ public class BirdScript : MonoBehaviour {
 
     void Update () {
         if (isDead()) {
-            die();
+            StartCoroutine(dieAnimation(1f));
         }
         else {
             if (GameManager.IsInputEnabled && Input.GetKeyDown(KeyCode.Space)) {
@@ -47,12 +48,13 @@ public class BirdScript : MonoBehaviour {
     }
 
     public void die() {
-        //Debug.Log("morri");
         dead = false;
+        ObstacleArrayScript.obstaclesSpeed = 0;
         body.velocity = new Vector2(-4f, 5f);
         body.angularVelocity = +120f;
         body.gravityScale = 1f;
         GameManager.IsInputEnabled = false;
+
     }
 
     public bool isDead() {
@@ -66,9 +68,15 @@ public class BirdScript : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D other) {
         GameObject objectCollided = other.gameObject;
         if (objectCollided.tag == "ScoreArea") {
-            score += 1;
-            ScoreText.text = score.ToString();
+            GameManager.score += 1;
+            ScoreText.text = GameManager.score.ToString();
         }
+    }
+
+    IEnumerator dieAnimation(float waitTime) {
+        die();
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene("GameOverScene");
     }
 
 

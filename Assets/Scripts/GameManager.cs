@@ -5,4 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public static bool IsInputEnabled = true;
+    public static int score;
+    public static int highscore;
 }

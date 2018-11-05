@@ -12,11 +12,10 @@ public class ObstacleArrayScript : MonoBehaviour {
     const float initialObjectX = 14f;
     const float rightmostObjectX = 13f;
     float x = initialObjectX;
-    public float obstaclesSpeed = 3f;
+    public static float obstaclesSpeed = 3f;
 
     // Use this for initialization
     void Start () {
-        //obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         for (int i = 0; i < 5; i++) {
             createObstacle(x);
             x += distanceBetweenObjects;
