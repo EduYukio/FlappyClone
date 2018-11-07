@@ -14,6 +14,12 @@ public class GameOverScript : MonoBehaviour {
         showScore();
     }
 
+    public void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            retryButton();
+        }
+    }
+
     public void retryButton() {
         SceneManager.LoadScene("MainScene");
     }
@@ -24,7 +30,7 @@ public class GameOverScript : MonoBehaviour {
 
     public void refreshGameState() {
         GameManager.IsInputEnabled = true;
-        ObstacleArrayScript.obstaclesSpeed = 3f;
+        GameManager.pipeMovementSpeed = 3f;
     }
 
     public void showScore() {

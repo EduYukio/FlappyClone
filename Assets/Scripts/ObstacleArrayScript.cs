@@ -8,30 +8,28 @@ public class ObstacleArrayScript : MonoBehaviour {
     public GameObject obstacle = null;
     float[] obstacleHeights = new float[] {-2f, -3f, -4f, -5f, -6f};
     const float leftSideOfScreenX = -10.5f;
-    const float distanceBetweenObjects = 5.9f;
     const float initialObjectX = 14f;
-    const float rightmostObjectX = 13f;
     float x = initialObjectX;
-    public static float obstaclesSpeed = 3f;
+    int lastRandom = 0;
 
     // Use this for initialization
     void Start () {
         for (int i = 0; i < 5; i++) {
             createObstacle(x);
-            x += distanceBetweenObjects;
+            x += GameManager.distanceBetweenObjects;
         }
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        this.transform.Translate(-obstaclesSpeed * Time.deltaTime, 0, 0);
+        this.transform.Translate(-GameManager.pipeMovementSpeed * Time.deltaTime, 0, 0);
 
         foreach (GameObject obstacle in obstacles) {
             if(obstacle.transform.position.x < leftSideOfScreenX) {
                 obstacles.Remove(obstacle);
                 Destroy(obstacle);
-                createObstacle(rightmostObjectX+distanceBetweenObjects);
+                createObstacle(leftSideOfScreenX+GameManager.distanceBetweenObjects*5);
                 break;
             }
         }
@@ -39,6 +37,10 @@ public class ObstacleArrayScript : MonoBehaviour {
 
     void createObstacle(float obstacleXPosition) {
         int randomIndex = Random.Range(0, 5);
+        while(randomIndex == lastRandom) {
+            randomIndex = Random.Range(0, 5);
+        }
+        lastRandom = randomIndex;
         float randomY = obstacleHeights[randomIndex];
         Vector3 obstaclePosition = new Vector3(obstacleXPosition, randomY, 0);
 

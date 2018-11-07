@@ -10,7 +10,6 @@ public class BirdScript : MonoBehaviour {
     SpriteRenderer birdSprite;
     Sprite normalSprite;
 
-    public float jumpSpeed;
     [HideInInspector] public static bool dead = false;
     public Sprite flappingSprite;
     float floorYCoordiante = -4.5f;
@@ -27,7 +26,7 @@ public class BirdScript : MonoBehaviour {
         normalSprite = birdSprite.sprite;
 
         if (!GameManager.pressedSpace) {
-            body.gravityScale = 0.4f;
+            body.gravityScale = 0.1f;
             PressSpaceText.enabled = true;
         }
     }
@@ -37,7 +36,7 @@ public class BirdScript : MonoBehaviour {
             StartCoroutine(dieAnimation(1f));
         }
         else {
-            if (GameManager.IsInputEnabled && Input.GetKeyDown(KeyCode.Space)) {
+            if (GameManager.IsInputEnabled && (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))) {
                 jump();
             }
         }
@@ -51,12 +50,13 @@ public class BirdScript : MonoBehaviour {
 
     void jump() {
         FindObjectOfType<AudioManager>().Play("Flap");
-        body.velocity = new Vector2(0f, jumpSpeed);
+        body.velocity = new Vector2(0f, GameManager.birdJumpHeight);
         StartCoroutine(flappingAnimation(0.1f));
 
         if (!GameManager.pressedSpace) {
-            body.gravityScale = 1.5f;
+            body.gravityScale = GameManager.birdGravityScale;
             GameManager.pressedSpace = true;
+            GameManager.pipeMovementSpeed = 3.2f;
             PressSpaceText.enabled = false;
         }
     }
@@ -64,12 +64,11 @@ public class BirdScript : MonoBehaviour {
     public void die() {
         FindObjectOfType<AudioManager>().Play("Baque");
         dead = false;
-        ObstacleArrayScript.obstaclesSpeed = 0;
+        GameManager.pipeMovementSpeed = 0;
         body.velocity = new Vector2(-4f, 5f);
         body.angularVelocity = +120f;
         body.gravityScale = 1f;
         GameManager.IsInputEnabled = false;
-
     }
 
     public bool isDead() {
