@@ -9,6 +9,7 @@ public class TextManagerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        adjustTutorialMessage();
         if (!GameManager.pressedSpace) {
             PressSpaceText.enabled = true;
         }
@@ -25,5 +26,17 @@ public class TextManagerScript : MonoBehaviour {
 
     public void updateScore() {
         ScoreText.text = GameManager.score.ToString();
+    }
+
+    public void adjustTutorialMessage() {
+        #if UNITY_STANDALONE
+                PressSpaceText.text = "PRESS SPACE BUTTON!!";
+        #elif UNITY_WEBGL
+                PressSpaceText.text = "PRESS SPACE BUTTON!!";
+        #elif UNITY_ANDROID
+                PressSpaceText.text = "TOUCH    ON THE SCREEN!!";
+        #elif UNITY_IOS
+                PressSpaceText.text = "TOUCH    ON THE SCREEN!!";
+        #endif
     }
 }
