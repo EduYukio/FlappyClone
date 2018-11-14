@@ -18,7 +18,6 @@ public class ObstacleArrayScript : MonoBehaviour {
             createObstacle(x);
             x += GameManager.distanceBetweenObjects;
         }
-
     }
 	
 	// Update is called once per frame
