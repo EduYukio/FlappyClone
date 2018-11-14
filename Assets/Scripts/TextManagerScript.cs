@@ -30,13 +30,13 @@ public class TextManagerScript : MonoBehaviour {
 
     public void adjustTutorialMessage() {
         #if UNITY_STANDALONE
-                PressSpaceText.text = "PRESS SPACE BUTTON!!";
+            PressSpaceText.text = "PRESS SPACE BUTTON!!";
         #elif UNITY_WEBGL
-                PressSpaceText.text = "PRESS SPACE BUTTON!!";
+            PressSpaceText.text = "PRESS SPACE BUTTON!!";
         #elif UNITY_ANDROID
-                PressSpaceText.text = "TOUCH    ON THE SCREEN!!";
+            PressSpaceText.text = "TOUCH    ON THE SCREEN!!";
         #elif UNITY_IOS
-                PressSpaceText.text = "TOUCH    ON THE SCREEN!!";
+            PressSpaceText.text = "TOUCH    ON THE SCREEN!!";
         #endif
     }
 }
