@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,21 +13,23 @@ public class BirdScript : MonoBehaviour {
     [HideInInspector] public static bool dead = false;
     public Sprite flappingSprite;
     float floorYCoordiante = -4.5f;
-    
-    public TextMeshProUGUI ScoreText;
-    public TextMeshProUGUI PressSpaceText;
+    GameObject textManagerObject;
+    TextManagerScript textManagerScript;
 
     void Start () {
         FindObjectOfType<AudioManager>().Play("Start");
         GameManager.score = 0;
+
+        textManagerObject = GameObject.Find("TextManager");
+        textManagerScript = textManagerObject.GetComponent<TextManagerScript>();
+
         body = GetComponent<Rigidbody2D>();
         birdSprite = GetComponent<SpriteRenderer>();
 
         normalSprite = birdSprite.sprite;
 
         if (!GameManager.pressedSpace) {
-            body.gravityScale = 0.1f;
-            PressSpaceText.enabled = true;
+            body.gravityScale = 0.05f;
         }
     }
 
@@ -57,7 +59,7 @@ public class BirdScript : MonoBehaviour {
             body.gravityScale = GameManager.birdGravityScale;
             GameManager.pressedSpace = true;
             GameManager.pipeMovementSpeed = 3.2f;
-            PressSpaceText.enabled = false;
+            textManagerScript.removePressSpaceText();
         }
     }
 
@@ -82,9 +84,9 @@ public class BirdScript : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D other) {
         GameObject objectCollided = other.gameObject;
         if (objectCollided.tag == "ScoreArea") {
-            GameManager.score += 1;
-            ScoreText.text = GameManager.score.ToString();
             FindObjectOfType<AudioManager>().Play("Plim");
+            GameManager.score += 1;
+            textManagerScript.updateScore();
             Destroy(other);
         }
     }
@@ -94,6 +96,4 @@ public class BirdScript : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene("GameOverScene");
     }
-
-
 }
