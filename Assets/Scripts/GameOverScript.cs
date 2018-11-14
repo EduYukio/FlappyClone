@@ -39,8 +39,12 @@ public class GameOverScript : MonoBehaviour {
         if (GameManager.score > GameManager.highscore) {
             FindObjectOfType<AudioManager>().Play("Victory");
             GameManager.highscore = GameManager.score;
-            HighScoreText.text = "HIGHSCORE     " + GameManager.highscore.ToString() + "\n                             NEW!!!";
 
+            GameObject gameStateObject = GameObject.Find("GameState");
+            GameState gameState = gameStateObject.GetComponent<GameState>();
+            gameState.Save();
+
+            HighScoreText.text = "HIGHSCORE     " + GameManager.highscore.ToString() + "\n                             NEW!!!";
         }
         else {
             HighScoreText.text = "HIGHSCORE     " + GameManager.highscore.ToString();
