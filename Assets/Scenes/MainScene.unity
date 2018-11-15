@@ -247,11 +247,11 @@ MonoBehaviour:
     lineCount: 3
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -886,7 +886,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4058460391591002, guid: 62e5128d01fc029469db18f7334e4174, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.7
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4058460391591002, guid: 62e5128d01fc029469db18f7334e4174, type: 2}
       propertyPath: m_LocalPosition.z

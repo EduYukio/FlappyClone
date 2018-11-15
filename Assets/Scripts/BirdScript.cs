@@ -10,9 +10,11 @@ public class BirdScript : MonoBehaviour {
     SpriteRenderer birdSprite;
     Sprite normalSprite;
 
-    [HideInInspector] public static bool dead = false;
     public Sprite flappingSprite;
-    float floorYCoordiante = -4.5f;
+    readonly float floorYCoordiante = -4.5f;
+    readonly float ceilingYCoordiante = 4.7f;
+    bool alreadyDied = false;
+    bool hasHitPipe = false;
     GameObject textManagerObject;
     TextManagerScript textManagerScript;
 
@@ -29,22 +31,20 @@ public class BirdScript : MonoBehaviour {
         normalSprite = birdSprite.sprite;
 
         if (!GameManager.pressedSpace) {
-            body.gravityScale = 0.05f;
+            body.gravityScale = 0f;
         }
     }
 
     void Update () {
-        if (isDead()) {
-            StartCoroutine(dieAnimation(1f));
+        if (!alreadyDied && MustDie()) {
+            StartCoroutine(DeathAnimation(1f));
         }
         else {
-            if (GameManager.IsInputEnabled && (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))) {
-                jump();
-            }
+            ProcessInputs();
         }
     }
 
-    IEnumerator flappingAnimation(float waitTime) {
+    IEnumerator FlappingAnimation(float waitTime) {
         birdSprite.sprite = flappingSprite;
         yield return new WaitForSeconds(waitTime);
         birdSprite.sprite = normalSprite;
@@ -53,7 +53,7 @@ public class BirdScript : MonoBehaviour {
     void jump() {
         FindObjectOfType<AudioManager>().Play("Flap");
         body.velocity = new Vector2(0f, GameManager.birdJumpHeight);
-        StartCoroutine(flappingAnimation(0.1f));
+        StartCoroutine(FlappingAnimation(0.1f));
 
         if (!GameManager.pressedSpace) {
             body.gravityScale = GameManager.birdGravityScale;
@@ -63,9 +63,8 @@ public class BirdScript : MonoBehaviour {
         }
     }
 
-    public void die() {
+    public void Die() {
         FindObjectOfType<AudioManager>().Play("Baque");
-        dead = false;
         GameManager.pipeMovementSpeed = 0;
         body.velocity = new Vector2(-4f, 5f);
         body.angularVelocity = +120f;
@@ -73,9 +72,10 @@ public class BirdScript : MonoBehaviour {
         GameManager.IsInputEnabled = false;
     }
 
-    public bool isDead() {
-        if (dead) return true;
+    public bool MustDie() {
+        if (hasHitPipe) return true;
         if (transform.position.y < floorYCoordiante) return true;
+        if (transform.position.y > ceilingYCoordiante) return true;
 
         return false;
     }
@@ -89,11 +89,34 @@ public class BirdScript : MonoBehaviour {
             textManagerScript.updateScore();
             Destroy(other);
         }
+
+        if (objectCollided.tag == "Obstacle") {
+            hasHitPipe = true;
+        }
     }
 
-    IEnumerator dieAnimation(float waitTime) {
-        die();
+    IEnumerator DeathAnimation(float waitTime) {
+        Die();
+        alreadyDied = true;
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene("GameOverScene");
+    }
+
+    public void ProcessInputs() {
+        if (GameManager.IsInputEnabled) {
+            #if UNITY_ANDROID || UNITY_IOS
+                if (Input.touchCount > 0) {
+                    TouchPhase touchPhase = Input.GetTouch(0).phase;
+
+                    if(touchPhase == TouchPhase.Began){
+                        jump();
+                    }
+                }
+            #else
+                if (Input.GetKeyDown(KeyCode.Space)) {
+                    jump();
+                }
+            #endif
+        }
     }
 }

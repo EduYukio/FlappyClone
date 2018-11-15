@@ -37,12 +37,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4040115919915212}
   - component: {fileID: 212988141390015696}
-  - component: {fileID: 114725848044505956}
   - component: {fileID: 50158404570409416}
   - component: {fileID: 61963511527138244}
   m_Layer: 0
   m_Name: Pipe (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,9 +55,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4635110496923840}
   - component: {fileID: 212680193560073632}
+  - component: {fileID: 50922693039263068}
+  - component: {fileID: 61299897560757880}
   m_Layer: 0
   m_Name: AlongateTop
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,12 +73,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4361030237672404}
   - component: {fileID: 212808580001531130}
-  - component: {fileID: 114119277566336858}
   - component: {fileID: 50775216117168754}
   - component: {fileID: 61321006313672700}
   m_Layer: 0
   m_Name: Pipe
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4775474584457348}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,9 +106,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4435612843914444}
   - component: {fileID: 212768931648982854}
+  - component: {fileID: 50161690924910262}
+  - component: {fileID: 61521254291741410}
   m_Layer: 0
   m_Name: AlongateBot
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +187,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808612349648362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.529372, y: -6.12, z: -0.2734375}
+  m_LocalPosition: {x: -11.319704, y: -0.28874767, z: -0.2734375}
   m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_Children:
   - {fileID: 4361030237672404}
@@ -211,6 +213,26 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &50161690924910262
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849912853829606}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -256,6 +278,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &50922693039263068
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345485208753590}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61049565595307598
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -280,6 +322,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.029333472, y: 1.6765144}
+  m_EdgeRadius: 0
+--- !u!61 &61299897560757880
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345485208753590}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.09117346}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.66, y: 0.41}
+    newSize: {x: 0.66, y: 0.41}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 0.22765304}
   m_EdgeRadius: 0
 --- !u!61 &61321006313672700
 BoxCollider2D:
@@ -306,6 +373,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6203552, y: 2.5176396}
   m_EdgeRadius: 0
+--- !u!61 &61521254291741410
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849912853829606}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.01613295}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.66, y: 0.41}
+    newSize: {x: 0.66, y: 0.41}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.66, y: 0.37773412}
+  m_EdgeRadius: 0
 --- !u!61 &61963511527138244
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -331,28 +423,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6203552, y: 2.5176396}
   m_EdgeRadius: 0
---- !u!114 &114119277566336858
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1578922887715702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64417e94585030b40a22d4eeafad23be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114725848044505956
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1115726421063812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64417e94585030b40a22d4eeafad23be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212680193560073632
 SpriteRenderer:
   m_ObjectHideFlags: 1
